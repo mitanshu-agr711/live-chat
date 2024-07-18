@@ -8,7 +8,7 @@ const{Server}=require("socket.io");//in server s must be capital for running the
 
 
 
-// const port=process.env.PORT||3000;
+const port=process.env.PORT||3000;
 
 const publicPath = path.join(__dirname,"../public");
 const templatePath = path.join(__dirname, "../templates");
@@ -22,14 +22,14 @@ app.get('/', (req, res) => {
     res.render('index'); // Assuming you have an 'index.hbs' file in the 'views' folder
 });
 
-// app.get('/',(req,res)=>{
-//     res.send("welcome to live chat");
-// })
+app.get('/',(req,res)=>{
+    res.send("welcome to live chat");
+})
 const server=http.createServer(app);
 const io=new Server(server);//handel the all request of socket io
 
 io.on("connection",(socket)=>{
-// console.log(`new user is connected`,socket.id);
+console.log(`new user is connected`,socket.id);
 
 //socket se message aya socket ko baat do
 socket.on("user-message",(message)=>{
